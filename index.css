@@ -1,0 +1,11 @@
+body {
+background: url("http://i.giphy.com/pYCdxGyLFSwgw.gif");
+background-repeat: no-repeat;
+background-size: cover;
+width: 100vw;
+height: 100vh;
+text-align: center;
+font-family: 'Press Start 2P', cursive;
+color: magenta;
+
+}
