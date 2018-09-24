@@ -4,7 +4,6 @@
 
 const SpeechRecognition = webkitSpeechRecognition;
 
-
 const getSpeech = () => {
   const recognition = new SpeechRecognition();
   recognition.lang = 'en-US';
@@ -18,13 +17,7 @@ const getSpeech = () => {
     console.log('result: ' + speechResult);
     console.log('confidence: ' + event.results[0][0].confidence);
     document.querySelector('#speech-div').textContent = speechResult;
-    // getGif(speechResult);
-    // if (speechResult === "Taco") {
     window.open('http://taco-randomizer.herokuapp.com/');
-    // } else if (speechResult !== "Taco") {
-    //   document.querySelector('#speech-div').textContent = "Come on. That's totally a Taco"
-    // };
-    //};
   };
 
   recognition.onend = () => {
@@ -41,24 +34,3 @@ const getSpeech = () => {
   };
 };
 getSpeech();
-
-// const getGif = phrase => {
-//   let url = `http://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
-//   console.log(url);
-//
-//   fetch(url, {
-//       mode: 'cors'
-//     })
-//     .then(response => response.json())
-//     .then(result => {
-//       const = openInNewTab(url) {
-//         var win = window.open(url, '_blank');
-//         win.focus();
-//       }
-//     });
-// };
-
-// document.querySelector('#my-button').onclick = () => {
-//   console.log('clickity');
-//   getSpeech();
-// };
