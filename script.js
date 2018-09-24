@@ -3,7 +3,7 @@
 // then go to http://localhost:8007 in your browser
 
 const SpeechRecognition = webkitSpeechRecognition;
-const giphyAPIKey = '9eit1NvI8kmCsilJNcMVGkir0HXQsCAn';
+
 
 const getSpeech = () => {
   const recognition = new SpeechRecognition();
@@ -18,7 +18,13 @@ const getSpeech = () => {
     console.log('result: ' + speechResult);
     console.log('confidence: ' + event.results[0][0].confidence);
     document.querySelector('#speech-div').textContent = speechResult;
-    getGif(speechResult);
+    // getGif(speechResult);
+    // if (speechResult === "Taco") {
+    window.open('http://taco-randomizer.herokuapp.com/');
+    // } else if (speechResult !== "Taco") {
+    //   document.querySelector('#speech-div').textContent = "Come on. That's totally a Taco"
+    // };
+    //};
   };
 
   recognition.onend = () => {
@@ -26,7 +32,7 @@ const getSpeech = () => {
 
     // for "endless" mode, comment out the next line and uncomment getSpeech()
     recognition.stop();
-    // getSpeech();
+    getSpeech();
 
   };
 
@@ -34,22 +40,25 @@ const getSpeech = () => {
     console.log('something went wrong: ' + event.error);
   };
 };
+getSpeech();
 
-const getGif = phrase => {
-  let url = `http://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
-  console.log(url);
+// const getGif = phrase => {
+//   let url = `http://api.giphy.com/v1/gifs/random?api_key=${giphyAPIKey}&tag=${phrase}`;
+//   console.log(url);
+//
+//   fetch(url, {
+//       mode: 'cors'
+//     })
+//     .then(response => response.json())
+//     .then(result => {
+//       const = openInNewTab(url) {
+//         var win = window.open(url, '_blank');
+//         win.focus();
+//       }
+//     });
+// };
 
-  fetch(url, {
-      mode: 'cors'
-    })
-    .then(response => response.json())
-    .then(result => {
-      let imgUrl = result.data.image_url;
-      document.querySelector('#the-gif').src = imgUrl;
-    });
-};
-
-document.querySelector('#my-button').onclick = () => {
-  console.log('clickity');
-  getSpeech();
-};
+// document.querySelector('#my-button').onclick = () => {
+//   console.log('clickity');
+//   getSpeech();
+// };
